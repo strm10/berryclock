@@ -1,0 +1,34 @@
+{
+    "update_interval": -1,
+    "common_settings": {
+	"font": "/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf"
+    },
+    "widgets": [
+	{
+	    "enabled": true,
+	    "module": "frame",
+	    "class": "Frame",
+	    "origin": [0, 0],
+	    "size": [640, 384],
+	    "settings": {
+		"lines": [
+		    [10, 60, 630, 60]
+		]
+	    }
+	},
+	{
+	    "enabled": true,
+	    "module": "clock",
+	    "class": "Date",
+	    "origin": [0, 0],
+	    "size": [640, 60]
+	},
+	{
+	    "enabled": true,
+	    "module": "shutoko",
+	    "class": "ShutokoTraffic",
+	    "origin": [309, 73],
+	    "size": [326, 306]
+	}
+    ]
+}
