@@ -25,6 +25,19 @@
 	},
 	{
 	    "enabled": true,
+	    "module": "rss",
+	    "class": "Rss",
+	    "origin": [30, 170],
+	    "size": [250, 250],
+	    "settings": {
+		"content_font": "/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf",
+		"url": "http://feeds.bbci.co.uk/news/rss.xml",
+		"title": "BBC Top Stroies",
+		"max_num_items": 10
+	    }
+	},
+	{
+	    "enabled": true,
 	    "module": "shutoko",
 	    "class": "ShutokoTraffic",
 	    "origin": [309, 73],
