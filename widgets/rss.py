@@ -36,7 +36,10 @@ class Rss(WidgetBase):
     
     def draw(self):
         images = [Image.new('1', self.expected_size, 255) for i in range(2)]
-        rss = Rss.get_rss('https://news.yahoo.co.jp/pickup/rss.xml')
+        
+        if 'url' not in self.settings:
+            return images
+        rss = Rss.get_rss(self.settings['url'])
 
         num_max_items = self.settings.get('num_max_items', 10)
         line_height = int(self.expected_size[1] / (num_max_items+1))
