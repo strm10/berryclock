@@ -41,10 +41,10 @@ class Rss(WidgetBase):
             return images
         rss = Rss.get_rss(self.settings['url'])
 
-        num_max_items = self.settings.get('num_max_items', 10)
-        line_height = int(self.expected_size[1] / (num_max_items+1))
+        max_num_items = self.settings.get('max_num_items', 10)
+        line_height = int(self.expected_size[1] / (max_num_items+1))
         font_size = int(line_height*0.6)
-        num_items = min(len(rss['item_list']), num_max_items)
+        num_items = min(len(rss['item_list']), max_num_items)
         
         if rss is None:
             return images
@@ -52,9 +52,12 @@ class Rss(WidgetBase):
         # black and red
         draw = ImageDraw.Draw(images[0])
         font = ImageFont.truetype(self.settings.get('font', ''), font_size)
-        draw.text((0, 0), self.settings.get('title', rss['title'] if rss['title'] is not None else ''), font=font)
+        title = self.settings.get('title', rss['title'] if rss['title'] is not None else '')
+        draw.text((0, 0), title, font=font)
+        w, h = draw.textsize(title, font=font)
+        draw.line([w+5, h/2, self.expected_size[0], h/2])
         font = ImageFont.truetype(self.settings.get('content_font', self.settings.get('font', '')), font_size)
         for i, item in enumerate(rss['item_list'][:num_items]):
-            draw.text((0, (i+1)*line_height), ' - ' + item, font=font)
+            draw.text((0, (i+1)*line_height), ' ' + item, font=font)
 
         return images
