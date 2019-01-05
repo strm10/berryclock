@@ -91,6 +91,8 @@ class BerryClock:
         images = [Image.new('1', (epd.EPD_WIDTH, epd.EPD_HEIGHT), 255) for _ in range(NUM_COLOR_CHANNELS)]
         for widget in self.widgets:
             widget_images = widget.instance.draw()
+            if widget_images is None:
+                continue
             for image, widget_image in zip(images, widget_images):
                 image.paste(widget_image, (widget.origin[0], widget.origin[1], widget.origin[0]+widget.size[0], widget.origin[1]+widget.size[1]))
         return images

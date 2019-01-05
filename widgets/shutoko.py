@@ -40,10 +40,4 @@ class ShutokoTraffic(WidgetBase):
         images[0] = srcP.point(lambda x: 0 if x in [0, 1] else 255, mode='1')
         images[1] = srcP.point(lambda x: 0 if x in [5, 6] else 255, mode='1')
 
-        fontS = ImageFont.truetype(self.settings.get('font', ''), 14)
-        fontL = ImageFont.truetype(self.settings.get('font', ''), 20)
-        draw = ImageDraw.Draw(images[0])
-        draw.text((5, 268), 'As of', font=fontS, fill=0)
-        draw.text((5, 280), datetime.datetime.now().strftime('%I:%M %p'), font=fontL, fill=0)
-        
         return images
