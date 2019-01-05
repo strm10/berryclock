@@ -42,6 +42,30 @@
 	    "class": "ShutokoTraffic",
 	    "origin": [309, 73],
 	    "size": [326, 306]
+	},
+	{
+	    "enabled": true,
+	    "module": "googlemaps_direction",
+	    "class": "RouteDuration",
+	    "origin": [314, 354],
+	    "size": [120, 30],
+	    "settings": {
+		"api_key": "YOUR_API_KEY_FOR_GOOGLE_MAPS_PLATFORM",
+		"origin": "Haneda+Airport",
+		"destination": "Narita+International+Airport",
+		"mode": "driving",
+		"destination_label": "Narita"
+	    }
+	},
+	{
+	    "enabled": true,
+	    "module": "textlabel",
+	    "class": "TimeStampLabel",
+	    "origin": [552, 366],
+	    "size": [88, 15],
+	    "settings": {
+		"text": "As of %I:%M %p"
+	    }
 	}
     ]
 }
