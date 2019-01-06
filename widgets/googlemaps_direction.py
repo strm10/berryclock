@@ -31,11 +31,11 @@ class RouteDuration(WidgetBase):
             log.warning('one or more parameters are missing: "origin", "destination", "api_key"')
             return None
         
-        url = 'https://maps.googleapis.com/maps/api/directions/json?origin=%s&destination=%s&key=%s&mode=%s' % (origin, destination, api_key, mode)
+        url = 'https://maps.googleapis.com/maps/api/directions/json?origin=%s&destination=%s&key=%s&mode=%s&departure_time=now' % (origin, destination, api_key, mode)
         response = requests.get(url)
         data = response.json()
-        # data['routes'][i]['legs'][j]['duration']['value']
-        duration_list = [[leg['duration']['value'] for leg in route['legs']] for route in data['routes']]
+        # data['routes'][i]['legs'][j]['duration_in_traffic']['value']
+        duration_list = [[leg['duration_in_traffic']['value'] for leg in route['legs']] for route in data['routes']]
         min_duration = round(min([min(tmp) for tmp in duration_list])/60)
         min_duration_str = str(min_duration)
         
