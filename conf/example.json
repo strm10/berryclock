@@ -45,16 +45,16 @@
 	},
 	{
 	    "enabled": true,
-	    "module": "googlemaps_direction",
+	    "module": "googlemaps_directions",
 	    "class": "RouteDuration",
 	    "origin": [314, 354],
 	    "size": [120, 30],
 	    "settings": {
 		"api_key": "YOUR_API_KEY_FOR_GOOGLE_MAPS_PLATFORM",
-		"origin": "Haneda+Airport",
-		"destination": "Narita+International+Airport",
+		"origin": "Times+Square",
+		"destination": "John+F.+Kennedy+International+Airport",
 		"mode": "driving",
-		"destination_label": "Narita"
+		"destination_label": "JFK"
 	    }
 	},
 	{
