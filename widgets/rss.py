@@ -1,9 +1,10 @@
-import datetime
 from . import WidgetBase
 from PIL import Image, ImageDraw, ImageFont
-import io
 import requests
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ETree
+import logging
+
+log = logging.getLogger(__name__)
 
 
 class Rss(WidgetBase):
@@ -14,7 +15,7 @@ class Rss(WidgetBase):
         item_list = []
         
         response = requests.get(url)
-        root = ET.fromstring(response.content)
+        root = ETree.fromstring(response.content)
         if root.tag != 'rss':
             log.warning('retrieved RSS data with unexpected root tag: %s' % root.tag)
             return None
@@ -33,9 +34,8 @@ class Rss(WidgetBase):
         
         return {'title': title, 'pub_date': pub_date, 'item_list': item_list}
         
-    
     def draw(self):
-        images = [Image.new('1', self.expected_size, 255) for i in range(2)]
+        images = [Image.new('1', self.expected_size, 255) for _ in range(2)]
         
         if 'url' not in self.settings:
             return images

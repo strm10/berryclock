@@ -5,10 +5,10 @@ Widgets using Directions API on Google Maps Platform
 from . import WidgetBase
 from PIL import Image, ImageDraw, ImageFont
 import requests
-import json
 import logging
 
 log = logging.getLogger('googlemaps_directions')
+
 
 def get_duration_in_traffic(origin, destination, key, mode):
     """
@@ -31,7 +31,7 @@ class RouteDuration(WidgetBase):
     - font (required)
     - font_size (optional)
     - mode (optional), options: ['driving', 'walking', 'bicycling', 'transit']
-    - destinaion_label (optional)
+    - destination_label (optional)
     """
     def draw(self):
         # read settings
@@ -54,7 +54,7 @@ class RouteDuration(WidgetBase):
             post_str += ' to ' + destination_label
             
         # draw "x min( to blah)"
-        images = [Image.new('1', self.expected_size, 255) for i in range(2)]
+        images = [Image.new('1', self.expected_size, 255) for _ in range(2)]
         draw = ImageDraw.Draw(images[0])
         font_size_unit = int(font_size_duration*0.67)
         font_duration = ImageFont.truetype(self.settings.get('font', ''), font_size_duration)

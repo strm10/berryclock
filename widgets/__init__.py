@@ -5,4 +5,3 @@ class WidgetBase:
 
     def draw(self):
         raise NotImplementedError()
-

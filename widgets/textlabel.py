@@ -15,8 +15,9 @@ class TextLabel(WidgetBase):
         self.draw_text(self.settings.get('text', ''))
 
     def draw_text(self, text):
-        images = [Image.new('1', self.expected_size, 255) for i in range(2)]
-        font = ImageFont.truetype(self.settings.get('font', ''), int(self.settings.get('font_size', self.expected_size[1]*0.8)))
+        images = [Image.new('1', self.expected_size, 255) for _ in range(2)]
+        font = ImageFont.truetype(self.settings.get('font', ''),
+                                  int(self.settings.get('font_size', self.expected_size[1]*0.8)))
         draw = ImageDraw.Draw(images[0])
         w, h = draw.textsize(text, font=font)
         x = int((self.expected_size[0]-w)/2)  # centering
